@@ -5,11 +5,11 @@
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        mc:Ignorable="d"
        xmlns:local="clr-namespace:NutritionApp.Mobile.Views"
-       Title="NutritionApp.Mobile"
+       Title="NutritionApp"
        x:Class="NutritionApp.Mobile.AppShell"
        FlyoutIsPresented="False">
 
-    <!-- Styles and Resources -->
+    <!-- Styles and Resources -->        
     <Shell.Resources>
         <ResourceDictionary>
             <Color x:Key="NavigationPrimary">#2196F3</Color>
@@ -30,17 +30,17 @@
 
     <!-- Your Pages -->
     <TabBar>
-        <Tab Title="+" Icon="tab_feed.png">
+        <Tab Title="ADD" Icon="add.png">
             <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
         </Tab>
-        <Tab Title="Nutrition" Icon="tab_feed.png">
+        <Tab Title="NUTRITION" Icon="food.png">
             <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
         </Tab>
-        <Tab Title="Body" Icon="tab_feed.png">
+        <Tab Title="BODY" Icon="body.png">
             <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
         </Tab>
-        <Tab Title="Home" Icon="tab_about.png">
-            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+        <Tab Title="HOME" Icon="account.png">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
     </TabBar>    
 

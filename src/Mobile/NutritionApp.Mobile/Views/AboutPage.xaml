@@ -12,24 +12,19 @@
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
     
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="Accent">#96d1ff</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
-                </ContentView>
+        
+        <StackLayout BackgroundColor="{StaticResource Primary}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center"
+                         Padding="0, 10, 0, 20">
+                <Label Text="NUTRITION APP" TextColor="{StaticResource PrimaryText}"
+                       FontSize="Title" FontAttributes="Bold" VerticalTextAlignment="End" Margin="0,0,-20,10" />
+                <Image Source="arm.png" VerticalOptions="End" HeightRequest="80" />                
             </StackLayout>
         </StackLayout>
         <ScrollView Grid.Row="1">
@@ -38,9 +33,9 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="AppName" FontAttributes="Bold" FontSize="22" />
+                                <Span Text="Nutrition App" FontAttributes="Bold" FontSize="22" />
                                 <Span Text=" " />
-                                <Span Text="1.0" ForegroundColor="{StaticResource LightTextColor}" />
+                                <Span Text="1.0" ForegroundColor="{StaticResource SecondaryText}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -70,10 +65,7 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Button Margin="0,10,0,0" Text="Learn more"
-                        Command="{Binding OpenWebCommand}"
-                        BackgroundColor="{StaticResource Primary}"
-                        TextColor="White" />
+                
             </StackLayout>
         </ScrollView>
     </Grid>

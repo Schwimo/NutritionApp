@@ -20,4 +20,10 @@
     <Folder Include="Services\Person\" />
     <Folder Include="Services\Nutrition\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\MainPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

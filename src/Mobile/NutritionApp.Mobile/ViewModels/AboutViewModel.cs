@@ -9,7 +9,7 @@ namespace NutritionApp.Mobile.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "About";
+            Title = "ABOUT";
 
             OpenWebCommand = new Command(() => Device.OpenUri(new Uri("https://xamarin.com/platform")));
         }
