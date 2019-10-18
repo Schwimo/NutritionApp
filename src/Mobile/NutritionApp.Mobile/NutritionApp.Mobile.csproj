@@ -6,7 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\AlertService\" />
+    <Folder Include="Services\Navigation\" />
+    <Folder Include="Services\Person\" />
+    <Folder Include="Services\Nutrition\" />
   </ItemGroup>
 </Project>
