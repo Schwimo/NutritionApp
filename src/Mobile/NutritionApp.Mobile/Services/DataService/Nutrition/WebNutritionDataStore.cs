@@ -24,17 +24,7 @@ namespace NutritionApp.Mobile.Services.DataService.Nutrition
         }
 
         bool IsConnected => Connectivity.NetworkAccess == NetworkAccess.Internet;
-        public async Task<IEnumerable<NutritionItem>> GetItemsAsync(bool forceRefresh = false)
-        {
-            if (forceRefresh && IsConnected)
-            {
-                var json = await client.GetStringAsync($"api/item");
-                items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<NutritionItem>>(json));
-            }
-
-            return items;
-        }
-
+        
         public async Task<NutritionItem> GetItemAsync(string id)
         {
             if (id != null && IsConnected)
@@ -80,6 +70,17 @@ namespace NutritionApp.Mobile.Services.DataService.Nutrition
             var response = await client.DeleteAsync($"api/item/{id}");
 
             return response.IsSuccessStatusCode;
+        }
+
+        public async Task<IEnumerable<NutritionItem>> GetItemsAsync(DateTime dateConstraint, bool forceRefresh = false)
+        {
+            if (forceRefresh && IsConnected)
+            {
+                var json = await client.GetStringAsync($"api/item");
+                items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<NutritionItem>>(json));
+            }
+
+            return items;
         }
     }
 }

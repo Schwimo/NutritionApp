@@ -21,11 +21,15 @@
             
             <!-- 1. ROW 
                 Todays Date with the options so swipe between days -->
-            <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="Center" >
-                <ImageButton Source="arrow_left.png" Command="{Binding PreviousDayCommand}" />
-                <Label Text="{Binding ActiveDate, StringFormat='{0:MMMM dd, yyyy}'}" FontSize="Large" 
-                       VerticalOptions="CenterAndExpand" />
-                <ImageButton Source="arrow_right.png" Command="{Binding NextDayCommand}" />
+            <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                <ImageButton Source="arrow_left.png" Command="{Binding PreviousDayCommand}" 
+                             />
+                <!--BackgroundColor="{StaticResource Icons}"-->
+                <Label Text="{Binding ActiveDate, StringFormat='{0:dd. MMMM yyyy}'}"
+                       FontSize="Large" HorizontalTextAlignment="Center"
+                       VerticalOptions="Center" WidthRequest="220"/>
+                <ImageButton Source="arrow_right.png" Command="{Binding NextDayCommand}" 
+                              />
             </StackLayout>
 
             <!-- 2. ROW 
@@ -167,20 +171,19 @@
                 The nutritions used as food
                 click on them for detailed information and change the used amount
                 enable deleting the nutritions from the list -->
-            <StackLayout Grid.Row="3" >
-                <ScrollView>
-                    <ListView>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Label />
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </ScrollView>                
-            </StackLayout>
-            
+            <ListView ItemsSource="{Binding ListOfNutritionItems}" Grid.Row="3" Margin="10,10,10,0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" >
+                                <Label Text="{Binding Name}" />
+                                <Label Text="{Binding Calories}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>            
+           
         </Grid>
     </ContentPage.Content>
 </ContentPage>

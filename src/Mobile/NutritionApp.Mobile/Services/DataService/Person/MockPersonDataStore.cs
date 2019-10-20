@@ -47,7 +47,7 @@ namespace NutritionApp.Mobile.Services.DataService.Nutrition
             return await Task.FromResult(_person);
         }
 
-        public async Task<IEnumerable<PersonItem>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<PersonItem>> GetItemsAsync(DateTime dateConstraint, bool forceRefresh = false)
         {
             throw new NotImplementedException();
         }
@@ -67,7 +67,7 @@ namespace NutritionApp.Mobile.Services.DataService.Nutrition
             throw new NotImplementedException();
         }
 
-        Task<IEnumerable<Weight>> IDataService<Weight>.GetItemsAsync(bool forceRefresh)
+        Task<IEnumerable<Weight>> IDataService<Weight>.GetItemsAsync(DateTime dateConstraint, bool forceRefresh)
         {
             throw new NotImplementedException();
         }
@@ -87,7 +87,7 @@ namespace NutritionApp.Mobile.Services.DataService.Nutrition
             throw new NotImplementedException();
         }
 
-        Task<IEnumerable<Circumference>> IDataService<Circumference>.GetItemsAsync(bool forceRefresh)
+        Task<IEnumerable<Circumference>> IDataService<Circumference>.GetItemsAsync(DateTime dateConstraint, bool forceRefresh)
         {
             throw new NotImplementedException();
         }

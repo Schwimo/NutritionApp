@@ -11,6 +11,6 @@ namespace NutritionApp.Mobile.Services.DataService.Core
         Task<bool> UpdateItemAsync(T item);
         Task<bool> DeleteItemAsync(string id);
         Task<T> GetItemAsync(string id);
-        Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);
+        Task<IEnumerable<T>> GetItemsAsync(DateTime dateConstraint, bool forceRefresh = false);
     }
 }

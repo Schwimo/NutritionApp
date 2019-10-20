@@ -1,5 +1,6 @@
 ﻿using NutritionApp.Mobile.Models.Nutrition;
 using NutritionApp.Mobile.Services.DataService.Nutrition.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -54,9 +55,9 @@ namespace NutritionApp.Mobile.Services.DataService.Nutrition
             return await Task.FromResult(items.FirstOrDefault(s => s.ID.Equals(id)));
         }
 
-        public async Task<IEnumerable<NutritionItem>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<NutritionItem>> GetItemsAsync(DateTime dateConstraint, bool forceRefresh = false)
         {
             return await Task.FromResult(items);
-        }        
+        }
     }
 }
