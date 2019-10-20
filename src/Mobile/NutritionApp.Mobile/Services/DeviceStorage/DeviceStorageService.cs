@@ -4,9 +4,14 @@ using NutritionApp.Mobile.Models.Person;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace NutritionApp.Mobile.Services.DeviceStorage
 {
+    /// <summary>
+    /// The device storage service is used to store all necessary items offline
+    /// on the device as json elements.
+    /// </summary>
     public class DeviceStorageService : IDeviceStorageService
     {
         #region Fields

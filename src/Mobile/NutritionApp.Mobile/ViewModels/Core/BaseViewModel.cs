@@ -1,31 +1,51 @@
-﻿using System;
+﻿using NutritionApp.Mobile.Services.DataService.Nutrition.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-using Xamarin.Forms;
-
-using NutritionApp.Mobile.Models;
-using NutritionApp.Mobile.Services;
-
-namespace NutritionApp.Mobile.ViewModels
+namespace NutritionApp.Mobile.ViewModels.Core
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        #region Fields
 
         bool isBusy = false;
+        string title = string.Empty;
+
+        protected readonly INutritionDataService NutritionDataService;
+
+        #endregion
+
+        #region Properties
+
         public bool IsBusy
         {
             get { return isBusy; }
             set { SetProperty(ref isBusy, value); }
         }
-
-        string title = string.Empty;
+        
         public string Title
         {
             get { return title; }
             set { SetProperty(ref title, value); }
+        }
+
+        #endregion
+
+        #region Constructors
+
+        public BaseViewModel()
+        {
+            NutritionDataService = ViewModelLocator.Resolve<INutritionDataService>();
+        }
+
+        #endregion
+
+        #region Methods
+
+        public virtual void OnAppearing()
+        {
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value,
@@ -41,7 +61,10 @@ namespace NutritionApp.Mobile.ViewModels
             return true;
         }
 
+        #endregion
+
         #region INotifyPropertyChanged
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
@@ -51,6 +74,7 @@ namespace NutritionApp.Mobile.ViewModels
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         #endregion
     }
 }

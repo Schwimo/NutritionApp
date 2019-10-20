@@ -4,16 +4,10 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="NutritionApp.Mobile.Views.MainPage"             
              xmlns:viewModelBase="clr-namespace:NutritionApp.Mobile.ViewModels.Core"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
              Title="{Binding Title}"
-             x:Name="MainPages">
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="MORE" IconImageSource="more.png" 
-                     Command="{Binding ShowMoreCommand}"/>
-    </ContentPage.ToolbarItems>
+             x:Class="NutritionApp.Mobile.Views.BodyPage">   
 
     <ContentPage.Content>
         <StackLayout>

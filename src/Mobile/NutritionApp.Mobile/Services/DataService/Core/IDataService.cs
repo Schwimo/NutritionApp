@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace NutritionApp.Mobile.Services
+namespace NutritionApp.Mobile.Services.DataService.Core
 {
-    public interface IDataStore<T>
+    public interface IDataService<T>
     {
         Task<bool> AddItemAsync(T item);
         Task<bool> UpdateItemAsync(T item);

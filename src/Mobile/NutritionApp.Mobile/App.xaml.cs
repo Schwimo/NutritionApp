@@ -17,13 +17,7 @@ namespace NutritionApp.Mobile
 
         public App()
         {
-            InitializeComponent();
-
-            if (UseMockDataStore)
-                DependencyService.Register<MockDataStore>();
-            else
-                DependencyService.Register<AzureDataStore>();
-            
+            InitializeComponent();            
             MainPage = new AppShell();
         }
 

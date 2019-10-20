@@ -7,14 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
-namespace NutritionApp.Mobile.Services
+namespace NutritionApp.Mobile.Services.DataService.Nutrition
 {
-    public class AzureDataStore
+    public class WebDataStore
     {
         HttpClient client;
         IEnumerable<NutritionItem> items;
 
-        public AzureDataStore()
+        public WebDataStore()
         {
             client = new HttpClient();
             client.BaseAddress = new Uri($"{App.AzureBackendUrl}/");

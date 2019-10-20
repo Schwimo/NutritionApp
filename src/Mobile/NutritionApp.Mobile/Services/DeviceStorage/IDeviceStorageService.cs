@@ -6,7 +6,7 @@ using System.Text;
 
 namespace NutritionApp.Mobile.Services.DeviceStorage
 {
-    interface IDeviceStorageService
+    public interface IDeviceStorageService
     {
         void WriteNutritionItems(IEnumerable<NutritionItem> nutritionItems);
         IEnumerable<NutritionItem> ReadNutritionItems();

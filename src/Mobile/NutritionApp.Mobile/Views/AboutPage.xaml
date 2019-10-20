@@ -4,27 +4,24 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="NutritionApp.Mobile.Views.AboutPage"
-             xmlns:vm="clr-namespace:NutritionApp.Mobile.ViewModels"
+             x:Class="NutritionApp.Mobile.Views.AboutPage"             
+             xmlns:viewModelBase="clr-namespace:NutritionApp.Mobile.ViewModels.Core"
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
              Title="{Binding Title}">
-    
-    <ContentPage.BindingContext>
-        <vm:AboutViewModel />
-    </ContentPage.BindingContext>
-    
+
     <Grid>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
+
         <StackLayout BackgroundColor="{StaticResource Primary}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center"
                          Padding="0, 10, 0, 20">
                 <Label Text="NUTRITION APP" TextColor="{StaticResource PrimaryText}"
                        FontSize="Title" FontAttributes="Bold" VerticalTextAlignment="End" Margin="0,0,-20,10" />
-                <Image Source="arm.png" VerticalOptions="End" HeightRequest="80" />                
+                <Image Source="arm.png" VerticalOptions="End" HeightRequest="80" />
             </StackLayout>
         </StackLayout>
         <ScrollView Grid.Row="1">
@@ -65,9 +62,9 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                
+
             </StackLayout>
         </ScrollView>
     </Grid>
-    
+
 </ContentPage>

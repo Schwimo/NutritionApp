@@ -1,4 +1,5 @@
-﻿using NutritionApp.Mobile.Views;
+﻿using NutritionApp.Mobile.ViewModels.Core;
+using NutritionApp.Mobile.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
