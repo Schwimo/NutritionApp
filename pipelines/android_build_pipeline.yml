@@ -14,13 +14,6 @@ variables:
   outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
 
 steps:
-- task: UseDotNet@2
-  displayName: 'Use dotnet sdk 3.x'
-  inputs:
-    packageType: 'sdk'
-    version: 3.0.0-preview8-28405-07
-    includePreviewVersions: true
-
 - task: NuGetToolInstaller@1
   inputs:
     versionSpec: 
