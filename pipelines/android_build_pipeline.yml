@@ -22,6 +22,9 @@ steps:
     includePreviewVersions: true
 
 - task: NuGetToolInstaller@1
+  inputs:
+    versionSpec: '5.x'
+    checkLatest: true
 
 - task: NuGetCommand@2
   inputs:
