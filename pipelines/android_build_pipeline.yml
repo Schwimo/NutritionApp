@@ -29,6 +29,11 @@ steps:
     configuration: '$(buildConfiguration)'
     clean: true
     msbuildVersionOption: 'latest'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '**/*droid*.csproj'
   
 - task: AndroidSigning@3
   inputs:
