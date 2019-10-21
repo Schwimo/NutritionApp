@@ -4,7 +4,7 @@ using System.Text;
 using NutritionApp.Mobile.Services.DataService.Core;
 using NutritionApp.Mobile.Models.Nutrition;
 
-namespace NutritionApp.Mobile.Services.DataService.Nutrition.Core
+namespace NutritionApp.Mobile.Services.DataService.Nutrition
 {
     public interface INutritionDataService : IDataService<NutritionItem>
     {        

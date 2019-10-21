@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using NutritionApp.Mobile.Models.Nutrition;
 using System;
 using System.Collections.Generic;
 
@@ -30,6 +31,9 @@ namespace NutritionApp.Mobile.Models.Person
         [JsonProperty("Circumferences")]
         public IList<Circumference> Circumferences { get; set; }
 
+        [JsonProperty("NutritionDiaryList")]
+        public IList<NutritionDiaryItem> NutritionDiaryList { get; set; }
+
         #region Constructors
 
         public PersonItem()
@@ -47,9 +51,11 @@ namespace NutritionApp.Mobile.Models.Person
             Height = copyPerson.Height;
             Weights = copyPerson.Weights;
             Circumferences = copyPerson.Circumferences;
+            NutritionDiaryList = copyPerson.NutritionDiaryList;
         }
 
-        public PersonItem(string personId, string firstName, string familyName, string mailAddress, DateTime birthday, double height, IList<Weight> weights, IList<Circumference> circumferences)
+        public PersonItem(string personId, string firstName, string familyName, string mailAddress, DateTime birthday, double height, 
+                          IList<Weight> weights, IList<Circumference> circumferences, IList<NutritionDiaryItem> nutritionDiaryItems)
         {
             PersonId = personId ?? throw new ArgumentNullException(nameof(personId));
             FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
@@ -59,6 +65,7 @@ namespace NutritionApp.Mobile.Models.Person
             Height = height;
             Weights = weights;
             Circumferences = circumferences;
+            NutritionDiaryList = nutritionDiaryItems;
         }
 
         #endregion

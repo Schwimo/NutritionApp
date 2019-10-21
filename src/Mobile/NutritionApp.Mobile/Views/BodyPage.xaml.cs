@@ -16,12 +16,5 @@ namespace NutritionApp.Mobile.Views
         {
             InitializeComponent();
         }
-
-        protected override void OnAppearing()
-        {
-            var test = 2;
-
-            base.OnAppearing();
-        }
     }
 }

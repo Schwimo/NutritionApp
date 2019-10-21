@@ -1,12 +1,6 @@
 ﻿using Autofac;
-using NutritionApp.Mobile.Models.Nutrition;
-using NutritionApp.Mobile.Services;
 using NutritionApp.Mobile.Services.DataService;
-using NutritionApp.Mobile.Services.DataService.Core;
 using NutritionApp.Mobile.Services.DataService.Nutrition;
-using NutritionApp.Mobile.Services.DataService.Nutrition.Core;
-using NutritionApp.Mobile.Services.DataService.Person.Core;
-using NutritionApp.Mobile.Services.DeviceStorage;
 using System;
 using System.Globalization;
 using System.Reflection;
@@ -57,21 +51,19 @@ namespace NutritionApp.Mobile.ViewModels.Core
             {
                 // Register mock services for testing
                 UseMockService = true;
-                builder.RegisterType<MockNutritionDataStore>().As<INutritionDataService>().SingleInstance();
-                builder.RegisterType<MockPersonDataStore>().As<IBodyDataService>().SingleInstance();
-                builder.RegisterType<MockPersonDataStore>().As<IPersonDataService>().SingleInstance();
-                builder.RegisterType<MockPersonDataStore>().As<IWeightDataService>().SingleInstance();
+                builder.RegisterType<MockNutritionDataService>().As<INutritionDataService>().SingleInstance();
+                
+                builder.RegisterType<MockNutritionDiaryDataService>().As<INutritionDiaryDataService>().SingleInstance();
+                builder.RegisterType<MockRecipeDataService>().As<IRecipeDataService>().SingleInstance();
 
-                //builder.RegisterType<NutritionServiceMock>().As<INutritionService>().SingleInstance();
-                //builder.RegisterType<PersonServiceMock>().As<IPersonService>().SingleInstance();
+                builder.RegisterType<MockPersonDataService>().As<IPersonDataService>().SingleInstance();                
+                builder.RegisterType<MockWeightDataService>().As<IWeightDataService>().SingleInstance();
+                builder.RegisterType<MockCircumferenceDataService>().As<ICircumferenceDataService>().SingleInstance();                
             }
             else
             {
                 // Register real services
                 UseMockService = false;
-
-                //builder.RegisterType<NutritionService>().As<INutritionService>().SingleInstance();
-                //builder.RegisterType<PersonService>().As<IPersonService>().SingleInstance();
             }
 
             if (_container != null)
@@ -121,4 +113,5 @@ namespace NutritionApp.Mobile.ViewModels.Core
         #endregion        
     }
 }
+
 

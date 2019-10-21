@@ -1,4 +1,4 @@
-﻿using NutritionApp.Mobile.Services.DataService.Nutrition.Core;
+﻿using NutritionApp.Mobile.Services.DataService.Nutrition;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

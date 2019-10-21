@@ -1,5 +1,4 @@
 ﻿using NutritionApp.Mobile.Models.Nutrition;
-using NutritionApp.Mobile.Services.DataService.Nutrition.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace NutritionApp.Mobile.Services.DataService.Nutrition
 {
-    public class MockNutritionDataStore : INutritionDataService
+    public class MockNutritionDataService : INutritionDataService
     {
         readonly List<NutritionItem> items;
 
-        public MockNutritionDataStore()
+        public MockNutritionDataService()
         {
             items = new List<NutritionItem>()
             {

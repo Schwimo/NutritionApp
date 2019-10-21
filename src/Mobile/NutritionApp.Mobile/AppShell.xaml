@@ -27,7 +27,7 @@
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
         </ResourceDictionary>
     </Shell.Resources>
-
+    
     <!-- Your Pages -->
     <TabBar >        
         <Tab Title="NUTRITION" Icon="food.png">
@@ -38,7 +38,7 @@
         </Tab>
         <Tab Title="HOME" Icon="account.png" >
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
-        </Tab>
+        </Tab>        
     </TabBar>    
 
 </Shell>

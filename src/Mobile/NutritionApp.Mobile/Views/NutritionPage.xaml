@@ -10,180 +10,193 @@
              x:Class="NutritionApp.Mobile.Views.NutritionPage">
 
     <ContentPage.Content>
-        <Grid Margin="0,20,0,0" RowSpacing="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                
-            </Grid.RowDefinitions>
-            
-            <!-- 1. ROW 
+
+        <Grid >
+            <Grid Margin="0,20,0,0" RowSpacing="0" x:Name="ContentGrid">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+
+                </Grid.RowDefinitions>
+
+                <!-- 1. ROW 
                 Todays Date with the options so swipe between days -->
-            <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
-                <ImageButton Source="arrow_left.png" Command="{Binding PreviousDayCommand}" 
+                <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                    <ImageButton Source="arrow_left.png" Command="{Binding PreviousDayCommand}" 
                              />
-                <!--BackgroundColor="{StaticResource Icons}"-->
-                <Label Text="{Binding ActiveDate, StringFormat='{0:dd. MMMM yyyy}'}"
+                    <!--BackgroundColor="{StaticResource Icons}"-->
+                    <Label Text="{Binding ActiveDate, StringFormat='{0:dd. MMMM yyyy}'}"
                        FontSize="Large" HorizontalTextAlignment="Center"
                        VerticalOptions="Center" WidthRequest="220"/>
-                <ImageButton Source="arrow_right.png" Command="{Binding NextDayCommand}" 
+                    <ImageButton Source="arrow_right.png" Command="{Binding NextDayCommand}" 
                               />
-            </StackLayout>
+                </StackLayout>
 
-            <!-- 2. ROW 
+                <!-- 2. ROW 
                 Used and available KCal Graph
                 Below are the numbers with (AIM) - (EATEN) + (SPORT) = TOTAL  -->
-            <StackLayout Grid.Row="1" Orientation="Vertical" Margin="10,10,10,10">
+                <StackLayout Grid.Row="1" Orientation="Vertical" Margin="10,10,10,10">
 
-                <ProgressBar BackgroundColor="Transparent" 
+                    <ProgressBar BackgroundColor="Transparent" 
                              FlowDirection="LeftToRight" ScaleY="3"
                              ProgressColor="{StaticResource Accent}" Progress="{Binding KcalProgress}" />
 
-                <Grid RowSpacing="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.2*" />
-                        <ColumnDefinition Width="0.066*" />
-                        <ColumnDefinition Width="0.2*" />
-                        <ColumnDefinition Width="0.066*" />
-                        <ColumnDefinition Width="0.2*" />
-                        <ColumnDefinition Width="0.066*" />
-                        <ColumnDefinition Width="0.2*" />
-                    </Grid.ColumnDefinitions>
+                    <Grid RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*" />
+                            <ColumnDefinition Width="0.066*" />
+                            <ColumnDefinition Width="0.2*" />
+                            <ColumnDefinition Width="0.066*" />
+                            <ColumnDefinition Width="0.2*" />
+                            <ColumnDefinition Width="0.066*" />
+                            <ColumnDefinition Width="0.2*" />
+                        </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="0" Grid.Column="0" Text="2500" HorizontalOptions="Center"
+                        <Label Grid.Row="0" Grid.Column="0" Text="2500" HorizontalOptions="Center"
                            FontSize="Large"/>
-                    <Label Grid.Row="1" Grid.Column="0" Text="AIM" HorizontalOptions="Center" 
+                        <Label Grid.Row="1" Grid.Column="0" Text="AIM" HorizontalOptions="Center" 
                            FontSize="Micro"/>
 
-                    <Label Grid.Row="0" Grid.Column="1" Text="-" 
+                        <Label Grid.Row="0" Grid.Column="1" Text="-" 
                            HorizontalOptions="Center" VerticalOptions="Center"/>
 
-                    <Label Grid.Row="0" Grid.Column="2" Text="1000" HorizontalOptions="Center"
+                        <Label Grid.Row="0" Grid.Column="2" Text="1000" HorizontalOptions="Center"
                            FontSize="Large"/>
-                    <Label Grid.Row="1" Grid.Column="2" Text="EATEN" HorizontalOptions="Center"
+                        <Label Grid.Row="1" Grid.Column="2" Text="EATEN" HorizontalOptions="Center"
                            FontSize="Micro"/>
 
-                    <Label Grid.Row="0" Grid.Column="3" Text="+" 
+                        <Label Grid.Row="0" Grid.Column="3" Text="+" 
                            HorizontalOptions="Center" VerticalOptions="Center"/>
 
-                    <Label Grid.Row="0" Grid.Column="4" Text="500" HorizontalOptions="Center" 
+                        <Label Grid.Row="0" Grid.Column="4" Text="500" HorizontalOptions="Center" 
                            FontSize="Large"/>
-                    <Label Grid.Row="1" Grid.Column="4" Text="SPORT" HorizontalOptions="Center"
+                        <Label Grid.Row="1" Grid.Column="4" Text="SPORT" HorizontalOptions="Center"
                            FontSize="Micro"/>
 
-                    <Label Grid.Row="0" Grid.Column="5" Text="=" 
+                        <Label Grid.Row="0" Grid.Column="5" Text="=" 
                            HorizontalOptions="Center" VerticalOptions="Center"/>
 
-                    <Label Grid.Row="0" Grid.Column="6" Text="2000" HorizontalOptions="Center"
+                        <Label Grid.Row="0" Grid.Column="6" Text="2000" HorizontalOptions="Center"
                            FontSize="Large"/>
-                    <Label Grid.Row="1" Grid.Column="6" Text="AVAILABLE" HorizontalOptions="Center"
+                        <Label Grid.Row="1" Grid.Column="6" Text="AVAILABLE" HorizontalOptions="Center"
                            FontSize="Micro"/>
 
-                </Grid>
-                
-            </StackLayout>
+                    </Grid>
 
-            <!-- 3. ROW 
+                </StackLayout>
+
+                <!-- 3. ROW 
                 The KCal split up into P / F / C
                 Show the used amount and the wanted amount -->
-            <Grid Grid.Row="2" Margin="10,0,10,10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.25*" />
-                    <ColumnDefinition Width="0.25*" />
-                    <ColumnDefinition Width="0.25*" />
-                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="2" Margin="10,0,10,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.25*" />
+                        <ColumnDefinition Width="0.25*" />
+                        <ColumnDefinition Width="0.25*" />
+                    </Grid.ColumnDefinitions>
 
-                <BoxView Grid.Column="0" BackgroundColor="Black" />
-                <Grid Grid.Column="0" BackgroundColor="{StaticResource Primary}" Margin="1" >
-                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                        <Label Text="PROTEIN" FontSize="Medium" HorizontalOptions="Center"/>
+                    <BoxView Grid.Column="0" BackgroundColor="Black" />
+                    <Grid Grid.Column="0" BackgroundColor="{StaticResource Primary}" Margin="1" >
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                            <Label Text="PROTEIN" FontSize="Medium" HorizontalOptions="Center"/>
 
-                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal">
 
-                            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" >
-                                <Label Text="63g" FontSize="Small" HorizontalOptions="Center"/>
-                                <Label Text="USED" FontSize="Micro" HorizontalOptions="Center" />
-                            </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" >
+                                    <Label Text="63g" FontSize="Small" HorizontalOptions="Center"/>
+                                    <Label Text="USED" FontSize="Micro" HorizontalOptions="Center" />
+                                </StackLayout>
 
-                            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" >
-                                <Label Text="12g" FontSize="Small" HorizontalOptions="Center"/>
-                                <Label Text="AVAILABLE" FontSize="Micro" HorizontalOptions="Center"/>
-                            </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" >
+                                    <Label Text="12g" FontSize="Small" HorizontalOptions="Center"/>
+                                    <Label Text="AVAILABLE" FontSize="Micro" HorizontalOptions="Center"/>
+                                </StackLayout>
 
-                        </StackLayout>
-
-                    </StackLayout>
-                </Grid>
-
-                <BoxView Grid.Column="1" BackgroundColor="Black" />
-                <Grid Grid.Column="1" BackgroundColor="{StaticResource Primary}"  Margin="1" >
-                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" >
-                        <Label Text="FAT" FontSize="Medium" HorizontalOptions="Center"/>
-
-                        <StackLayout Orientation="Horizontal">
-
-                            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" >
-                                <Label Text="63g" FontSize="Small" HorizontalOptions="Center"/>
-                                <Label Text="USED" FontSize="Micro" HorizontalOptions="Center" />
-                            </StackLayout>
-
-                            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" >
-                                <Label Text="12g" FontSize="Small" HorizontalOptions="Center"/>
-                                <Label Text="AVAILABLE" FontSize="Micro" HorizontalOptions="Center"/>
                             </StackLayout>
 
                         </StackLayout>
-                        
-                    </StackLayout>
-                </Grid>
+                    </Grid>
 
-                <BoxView Grid.Column="2" BackgroundColor="Black" />
-                <Grid Grid.Column="2" BackgroundColor="{StaticResource Primary}"  Margin="1">
-                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                        <Label Text="CARBS" FontSize="Medium" HorizontalOptions="Center"/>
+                    <BoxView Grid.Column="1" BackgroundColor="Black" />
+                    <Grid Grid.Column="1" BackgroundColor="{StaticResource Primary}"  Margin="1" >
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" >
+                            <Label Text="FAT" FontSize="Medium" HorizontalOptions="Center"/>
 
-                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal">
 
-                            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" >
-                                <Label Text="63g" FontSize="Small" HorizontalOptions="Center"/>
-                                <Label Text="USED" FontSize="Micro" HorizontalOptions="Center" />
-                            </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" >
+                                    <Label Text="63g" FontSize="Small" HorizontalOptions="Center"/>
+                                    <Label Text="USED" FontSize="Micro" HorizontalOptions="Center" />
+                                </StackLayout>
 
-                            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" >
-                                <Label Text="12g" FontSize="Small" HorizontalOptions="Center"/>
-                                <Label Text="AVAILABLE" FontSize="Micro" HorizontalOptions="Center"/>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" >
+                                    <Label Text="12g" FontSize="Small" HorizontalOptions="Center"/>
+                                    <Label Text="AVAILABLE" FontSize="Micro" HorizontalOptions="Center"/>
+                                </StackLayout>
+
                             </StackLayout>
 
                         </StackLayout>
+                    </Grid>
 
-                    </StackLayout>
+                    <BoxView Grid.Column="2" BackgroundColor="Black" />
+                    <Grid Grid.Column="2" BackgroundColor="{StaticResource Primary}"  Margin="1">
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                            <Label Text="CARBS" FontSize="Medium" HorizontalOptions="Center"/>
+
+                            <StackLayout Orientation="Horizontal">
+
+                                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" >
+                                    <Label Text="63g" FontSize="Small" HorizontalOptions="Center"/>
+                                    <Label Text="USED" FontSize="Micro" HorizontalOptions="Center" />
+                                </StackLayout>
+
+                                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" >
+                                    <Label Text="12g" FontSize="Small" HorizontalOptions="Center"/>
+                                    <Label Text="AVAILABLE" FontSize="Micro" HorizontalOptions="Center"/>
+                                </StackLayout>
+
+                            </StackLayout>
+
+                        </StackLayout>
+                    </Grid>
+
                 </Grid>
 
-            </Grid>
-
-            <!-- 4. ROW 
+                <!-- 4. ROW 
                 The nutritions used as food
                 click on them for detailed information and change the used amount
                 enable deleting the nutritions from the list -->
-            <ListView ItemsSource="{Binding ListOfNutritionItems}" Grid.Row="3" Margin="10,10,10,0">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" >
-                                <Label Text="{Binding Name}" />
-                                <Label Text="{Binding Calories}" />
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>            
-           
+                <ListView ItemsSource="{Binding ListOfNutritionItems}" Grid.Row="3" Margin="10,10,10,0"
+                          SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" >
+                                    <Label Text="{Binding Name}" />
+                                    <Label Text="{Binding Calories}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </Grid>
+            
+            <ImageButton Source="add_circle.png" 
+                         HorizontalOptions="End" VerticalOptions="End"
+                         Margin="0,0,20,20"
+                         WidthRequest="60" HeightRequest="60"
+                         BackgroundColor="Transparent"
+                         Command="{Binding AddNutritionItemCommand}"
+                         />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

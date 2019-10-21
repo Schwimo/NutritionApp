@@ -45,6 +45,7 @@ namespace NutritionApp.Mobile.ViewModels
 
         public ICommand PreviousDayCommand => new Command(OnPreviousDayCommandExecute);
         public ICommand NextDayCommand => new Command(OnNextDayCommandExecute);
+        public ICommand AddNutritionItemCommand => new Command(OnAddNutritionItemCommandExecute);
 
         #endregion
 
@@ -120,6 +121,14 @@ namespace NutritionApp.Mobile.ViewModels
 
             Task.Run(async () => await LoadNutritionItemsForDate(ActiveDate));
             UpdateNutritionDetails();
+        }
+
+        /// <summary>
+        /// Adds a new nutrition item to the nutrition diary of the person
+        /// </summary>
+        private void OnAddNutritionItemCommandExecute()
+        {
+
         }
 
         #endregion

@@ -1,12 +1,11 @@
 ﻿using NutritionApp.Mobile.Models.Nutrition;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NutritionApp.Mobile.Services.DataService.Nutrition
 {
-    public class OfflinePersonDataStore
+    public class OfflineNutritionDataService : INutritionDataService
     {
         public Task<bool> AddItemAsync(NutritionItem item)
         {
@@ -22,8 +21,8 @@ namespace NutritionApp.Mobile.Services.DataService.Nutrition
         {
             throw new NotImplementedException();
         }
-
-        public Task<IEnumerable<NutritionItem>> GetItemsAsync(bool forceRefresh = false)
+        
+        public Task<IEnumerable<NutritionItem>> GetItemsAsync(DateTime dateConstraint, bool forceRefresh = false)
         {
             throw new NotImplementedException();
         }
