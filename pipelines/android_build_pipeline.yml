@@ -33,7 +33,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/*droid*.csproj'
+    projects: '**/*Mobile.UnitTests.csproj'
   
 - task: AndroidSigning@3
   inputs:
