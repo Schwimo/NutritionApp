@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using NutritionApp.Mobile.Services.DataService.Core;
-using NutritionApp.Mobile.Models.Nutrition;
+using NutritionApp.Core.Models.Nutrition;
 
 namespace NutritionApp.Mobile.Services.DataService.Nutrition
 {

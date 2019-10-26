@@ -9,6 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="db.txt" />
+    <None Remove="Services\DataServices\NutritionServices\db.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="db.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="4.9.4" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.848062" />  
@@ -17,6 +28,10 @@
 
   <ItemGroup>
     <Folder Include="Services\AlertService\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\NutritionApp.Core\NutritionApp.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

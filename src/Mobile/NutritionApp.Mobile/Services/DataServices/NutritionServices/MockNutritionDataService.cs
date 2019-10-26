@@ -1,28 +1,28 @@
-﻿using NutritionApp.Mobile.Models.Nutrition;
+﻿using Newtonsoft.Json;
+using NutritionApp.Core.Models.Nutrition;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace NutritionApp.Mobile.Services.DataService.Nutrition
 {
     public class MockNutritionDataService : INutritionDataService
     {
-        readonly List<NutritionItem> items;
+        private readonly List<NutritionItem> items;
 
         public MockNutritionDataService()
         {
-            items = new List<NutritionItem>()
+            var assembly = IntrospectionExtensions.GetTypeInfo(typeof(MockNutritionDataService)).Assembly;
+            Stream stream = assembly.GetManifestResourceStream("NutritionApp.Mobile.db.txt");
+            string text = "";
+            using (var reader = new System.IO.StreamReader(stream))
             {
-                new NutritionItem("Peach", 100, 20, 10, 5),
-                new NutritionItem("Apple", 100, 20, 10, 5),
-                new NutritionItem("Banana", 100, 20, 10, 5),
-                new NutritionItem("Oats", 100, 20, 10, 5),
-                new NutritionItem("Chicken", 100, 20, 10, 5),
-                new NutritionItem("Lemon", 100, 20, 10, 5),
-                new NutritionItem("Cheddar", 100, 20, 10, 5),
-                new NutritionItem("Fish", 100, 20, 10, 5),
-            };
+                text = reader.ReadToEnd();
+                items = JsonConvert.DeserializeObject<List<NutritionItem>>(text);
+            }            
         }
 
         public async Task<bool> AddItemAsync(NutritionItem item)
@@ -56,7 +56,9 @@ namespace NutritionApp.Mobile.Services.DataService.Nutrition
 
         public async Task<IEnumerable<NutritionItem>> GetItemsAsync(DateTime dateConstraint, bool forceRefresh = false)
         {
+
             return await Task.FromResult(items);
         }
     }
 }
+

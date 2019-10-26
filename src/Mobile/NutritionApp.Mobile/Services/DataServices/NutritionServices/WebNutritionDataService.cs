@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using NutritionApp.Mobile.Models.Nutrition;
+using NutritionApp.Core.Models.Nutrition;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -50,7 +50,9 @@ namespace NutritionApp.Mobile.Services.DataService.Nutrition
         public async Task<bool> UpdateItemAsync(NutritionItem item)
         {
             if (item == null || item.ID == null || !IsConnected)
+            {
                 return false;
+            }
 
             var serializedItem = JsonConvert.SerializeObject(item);
             var buffer = Encoding.UTF8.GetBytes(serializedItem);

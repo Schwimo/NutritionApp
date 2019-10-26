@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using NutritionApp.Mobile.Models.Person;
+using NutritionApp.Core.Models.Person;
 
 namespace NutritionApp.Mobile.Services.DataService
 {

@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
-using NutritionApp.Mobile.Models.Nutrition;
-using NutritionApp.Mobile.Models.Person;
+using NutritionApp.Core.Models.Nutrition;
+using NutritionApp.Core.Models.Person;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace NutritionApp.Mobile.Services.DeviceStorage
 {

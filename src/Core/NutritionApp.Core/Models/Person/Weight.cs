@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace NutritionApp.Mobile.Models.Person
+namespace NutritionApp.Core.Models.Person
 {
     public class Weight
     {

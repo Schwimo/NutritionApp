@@ -1,4 +1,4 @@
-﻿namespace NutritionApp.Mobile.Enums
+﻿namespace NutritionApp.Core.Enums
 {
     public enum DisplayLayout
     {

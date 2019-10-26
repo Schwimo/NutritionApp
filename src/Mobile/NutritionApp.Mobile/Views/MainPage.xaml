@@ -16,10 +16,9 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical">
+            <Label Text="{Binding ItemsCount}" />
+            <ListView ItemsSource="{Binding NutritionItemDatabase}" SelectionMode="None"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
