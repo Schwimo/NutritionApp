@@ -1,5 +1,6 @@
 ﻿using NutritionApp.Core.Models.Nutrition;
 using NutritionApp.Mobile.ViewModels.Core;
+using NutritionApp.Mobile.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,8 +53,7 @@ namespace NutritionApp.Mobile.ViewModels
         }
                
         #endregion
-
-
+        
         #region Constructors
 
         public DatabaseViewModel()
@@ -91,6 +91,9 @@ namespace NutritionApp.Mobile.ViewModels
         private void OnItemClickedCommandExecute(object param)
         {
             int id = Convert.ToInt32(param);
+            NutritionItem item = _nutritionItems.Where(x => x.ID == id).FirstOrDefault();
+
+            App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new NutritionItemDetailsPage(item)));
         }
 
         private void OnCategoriesClickedCommandExecute(object param)

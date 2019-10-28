@@ -45,6 +45,7 @@ namespace NutritionApp.Mobile.ViewModels.Core
             builder.RegisterType<NutritionViewModel>();
             builder.RegisterType<BodyViewModel>();
             builder.RegisterType<DatabaseViewModel>();
+            builder.RegisterType<NutritionItemDetailsViewModel>();
 
             // Services                        
 

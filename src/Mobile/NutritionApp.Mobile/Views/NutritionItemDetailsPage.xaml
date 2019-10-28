@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NutritionApp.Mobile.Views.NutritionItemDetailsPage"
+             xmlns:viewModelBase="clr-namespace:NutritionApp.Mobile.ViewModels.Core"
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             Title="{Binding Title}"
+             x:Name="NutritionItemDetails">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="CALORIES" />
+            <Label Text="{Binding Item.Calories}" />
+
+            <Label Text="CARBS" />
+            <Label Text="{Binding Item.Carbs.Value}" />
+
+            <Label Text="FAT" />
+            <Label Text="{Binding Item.Fat.Value}" />
+
+            <Label Text="PROTEIN" />
+            <Label Text="{Binding Item.Protein.Value}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

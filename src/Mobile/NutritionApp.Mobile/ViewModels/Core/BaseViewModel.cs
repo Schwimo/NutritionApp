@@ -44,6 +44,10 @@ namespace NutritionApp.Mobile.ViewModels.Core
 
         #region Methods
 
+        public virtual void OnNavigatingTo(object param)
+        {
+        }
+
         public virtual void OnAppearing()
         {
         }

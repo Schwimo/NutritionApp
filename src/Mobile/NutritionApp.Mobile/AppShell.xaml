@@ -38,7 +38,7 @@
         </Tab>
         <Tab Title="BODY" Icon="body.png">
             <ShellContent ContentTemplate="{DataTemplate local:BodyPage}" />
-        </Tab>        
+        </Tab>             
     </TabBar>    
 
 </Shell>
