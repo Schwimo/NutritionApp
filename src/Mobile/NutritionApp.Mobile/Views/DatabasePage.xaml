@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NutritionApp.Mobile.Views.DatabasePage"
+             xmlns:viewModelBase="clr-namespace:NutritionApp.Mobile.ViewModels.Core"
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             Title="{Binding Title}"
+             x:Name="DataBasePage">
+    <ContentPage.Content>
+        <Grid>
+            <ListView x:Name="CategorieListView" ItemsSource="{Binding NutritionItemCategories}"                      
+                      IsVisible="{Binding IsCategorieListViewVisible}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Grid HeightRequest="40">                                
+                                <Button Text="{Binding Name}"                                        
+                                        Command="{Binding BindingContext.CategoriesClickedCommand, Source={x:Reference DataBasePage}}"                                         
+                                        CommandParameter="{Binding ID}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>                
+            </ListView>
+
+            <ListView x:Name="ItemListView"  ItemsSource="{Binding NutritionItems}" 
+                      IsVisible="{Binding IsItemListViewVisible}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Grid HeightRequest="40">
+                                <Button Text="{Binding Name}"                                        
+                                        Command="{Binding BindingContext.ItemClickedCommand, Source={x:Reference DataBasePage}}"                                         
+                                        CommandParameter="{Binding ID}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -21,7 +21,9 @@ namespace NutritionApp.Mobile.ViewModels
         #region Properties
 
         public ICommand ShowMoreCommand => new Command(async () => await OnShowMoreCommandExecute());
-         
+        public ICommand ShowDatabaseCommand => new Command(async () => await OnShowDatabaseCommandExecute());
+        public ICommand ShowRecipesCommand => new Command(async () => await OnShowRecipesCommandExecute());        
+
         public IList<NutritionItem> NutritionItemDatabase
         {
             get { return _nutritionItemDatabase; }
@@ -68,6 +70,17 @@ namespace NutritionApp.Mobile.ViewModels
         {
             await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new AboutPage()));
         }
+
+        private async Task OnShowDatabaseCommandExecute()
+        {
+            await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new DatabasePage()));
+        }
+
+        private async Task OnShowRecipesCommandExecute()
+        {
+            await App.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new DatabasePage()));
+        }
+
 
         #endregion
     }

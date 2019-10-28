@@ -9,7 +9,7 @@ using Xamarin.Essentials;
 
 namespace NutritionApp.Mobile.Services.DataService.Nutrition
 {
-    public class WebNutritionDataService : INutritionDataService
+    public class WebNutritionDataService
     {
         HttpClient client;
         IEnumerable<NutritionItem> items;

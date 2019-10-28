@@ -16,10 +16,10 @@ namespace NutritionApp.Core.Models.Nutrition
         public string Name { get; set; }
 
         [JsonProperty("Synonyms")]
-        public IEnumerable<string> Synonyms { get; set; }
+        public IList<string> Synonyms { get; set; }
 
         [JsonProperty("Categories")]
-        public IEnumerable<string> Categories { get; set; }
+        public IList<int> Categories { get; set; }
 
         [JsonProperty("ReferenceValue")]
         public ReferenceUnitsEnum ReferenceValue { get; set; }
@@ -150,7 +150,8 @@ namespace NutritionApp.Core.Models.Nutrition
 
         public NutritionItem()
         {
-
+            Synonyms = new List<string>();
+            Categories = new List<int>();
         }
 
         #endregion

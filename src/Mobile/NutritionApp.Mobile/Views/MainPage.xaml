@@ -16,9 +16,33 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <Label Text="{Binding ItemsCount}" />
-            <ListView ItemsSource="{Binding NutritionItemDatabase}" SelectionMode="None"/>
-        </StackLayout>
+        <Grid ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.25*" />
+                <RowDefinition Height="0.25*" />
+                <RowDefinition Height="0.25*" />
+                <RowDefinition Height="0.25*" />                
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="0.5*" />
+            </Grid.ColumnDefinitions>
+
+            <ImageButton Grid.Column="0" Grid.Row="0" 
+                         BorderWidth="1" Margin="2"
+                         Source="diet.png" BackgroundColor="Transparent"
+                         BorderColor="Black" CornerRadius="5"
+                         Command="{Binding ShowDatabaseCommand}" />
+            <ImageButton Grid.Column="1" Grid.Row="0" 
+                         BorderWidth="1"
+                         Source="recipe_book.png" 
+                         Margin="2" BackgroundColor="Transparent"
+                         BorderColor="Black" CornerRadius="5" 
+                         Command="{Binding ShowRecipesCommand}"/>
+
+        </Grid>
+        
     </ContentPage.Content>
 </ContentPage>
+    

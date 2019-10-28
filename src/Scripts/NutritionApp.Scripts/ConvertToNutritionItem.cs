@@ -1,11 +1,23 @@
 ﻿using NutritionApp.Core.Models.Nutrition;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace NutritionApp.Scripts
 {
     public static class ConvertToNutritionItem
     {
+        #region Fields
+
+        public static IList<NutritionItemCategorie> ItemCategories = new List<NutritionItemCategorie>();
+        private static int categorieIndex = 10000;
+        #endregion
+
+        #region Methods
+
+        #endregion
+
         public static NutritionItem ConvertRow(DataRow header, DataRow row)
         {
             NutritionItem nutriItem = new NutritionItem();
@@ -26,7 +38,7 @@ namespace NutritionApp.Scripts
                 }
                 else if (header.ItemArray[i].Equals("Kategorie"))
                 {
-                    nutriItem.Categories = row.ItemArray[i].ToString().Split(';');
+                    GenerateCategories(row.ItemArray[i].ToString(), nutriItem);                    
                 }
                 else if (header.ItemArray[i].Equals("Bezugseinheit"))
                 {
@@ -468,6 +480,62 @@ namespace NutritionApp.Scripts
             }
 
             return nutriItem;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public static void GenerateCategories(string categories, NutritionItem nutritionItem)
+        {
+            IList<int> listOfCategorieIndexes = new List<int>();
+            var split = categories.Split(';');
+
+            foreach (var x in split)
+            {
+                var sub_split = x.Split('/');
+
+                categorieIndex++;
+                NutritionItemCategorie categorie = new NutritionItemCategorie(categorieIndex);
+                categorie.Name = sub_split[0];
+
+                var cat = ItemCategories.Where(x => x.Name == categorie.Name).FirstOrDefault();
+                if (cat == null)
+                {
+                    ItemCategories.Add(categorie);
+                }
+                else
+                {
+                    categorie = cat;
+                }
+
+                nutritionItem.Categories.Add(categorie.ID);
+                categorie.ListOfNutritionItemIDs.Add(nutritionItem.ID);
+
+                if (sub_split.Length <= 1)
+                {
+                    continue;
+                }
+
+                categorieIndex++;
+                NutritionItemCategorie sub_categorie = new NutritionItemCategorie(categorieIndex);
+                sub_categorie.Name = sub_split[1];
+                sub_categorie.ParentID = categorie.ID;
+
+                var sub_cat = categorie.ListOfSubCategories.Where(x => x.Name == sub_categorie.Name).FirstOrDefault();
+                if (sub_cat == null)
+                {
+                    categorie.ListOfSubCategories.Add(sub_categorie);
+                }
+                else
+                {
+                    sub_categorie = sub_cat;
+                }
+
+                nutritionItem.Categories.Append(sub_categorie.ID);
+                sub_categorie.ListOfNutritionItemIDs.Add(nutritionItem.ID);
+            }            
         }
     }
 }

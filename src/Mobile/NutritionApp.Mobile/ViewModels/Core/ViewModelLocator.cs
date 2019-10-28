@@ -44,14 +44,15 @@ namespace NutritionApp.Mobile.ViewModels.Core
             builder.RegisterType<AboutViewModel>();
             builder.RegisterType<NutritionViewModel>();
             builder.RegisterType<BodyViewModel>();
+            builder.RegisterType<DatabaseViewModel>();
 
             // Services                        
-            
+
             if (useMockServices)
             {
                 // Register mock services for testing
                 UseMockService = true;
-                builder.RegisterType<MockNutritionDataService>().As<INutritionDataService>().SingleInstance();
+                builder.RegisterType<OfflineNutritionDataService>().As<INutritionDataService>().SingleInstance();
                 
                 builder.RegisterType<MockNutritionDiaryDataService>().As<INutritionDiaryDataService>().SingleInstance();
                 builder.RegisterType<MockRecipeDataService>().As<IRecipeDataService>().SingleInstance();
