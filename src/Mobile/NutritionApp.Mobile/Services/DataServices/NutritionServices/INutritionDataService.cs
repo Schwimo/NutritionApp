@@ -9,11 +9,14 @@ namespace NutritionApp.Mobile.Services.DataService.Nutrition
 {
     public interface INutritionDataService
     {
+        // NUTRITION ITEM
         Task<bool> AddItemAsync(NutritionItem item);
         Task<bool> UpdateItemAsync(NutritionItem item);
         Task<bool> DeleteItemAsync(string id);
         Task<NutritionItem> GetItemAsync(string id);
         Task<IList<NutritionItem>> GetItemsAsync(DateTime date, IList<int> ids = null, bool forceRefresh = false);
+
+        // CATEGORIES
         Task<IList<NutritionItemCategorie>> GetCategoriesAsync(bool forceRefresh = false);
     }
 }

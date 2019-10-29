@@ -39,7 +39,7 @@ namespace NutritionApp.Mobile.Services.DataService
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<NutritionDiaryItem>> GetItemsAsync(DateTime dateConstraint, bool forceRefresh = false)
+        public Task<IList<NutritionDiaryItem>> GetItemsAsync(DateTime date, bool forceRefresh = false)
         {
             throw new NotImplementedException();
         }

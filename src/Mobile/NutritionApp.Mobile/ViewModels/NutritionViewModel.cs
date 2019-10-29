@@ -1,4 +1,5 @@
 ﻿using NutritionApp.Core.Models.Nutrition;
+using NutritionApp.Mobile.Services.DataService;
 using NutritionApp.Mobile.ViewModels.Core;
 using System;
 using System.Collections.Generic;
@@ -19,12 +20,14 @@ namespace NutritionApp.Mobile.ViewModels
         private DateTime _activeDate;
         private double _kcalProgress;
 
-        private IList<NutritionItem> _listOfNutritionItems = new List<NutritionItem>();
+        private IList<NutritionDiaryItem> _listOfNutritionDiaryItems = new List<NutritionDiaryItem>();
+
+        private INutritionDiaryDataService NutritionDiaryDataService;
 
         #endregion
 
         #region Porperties
-                
+
         public DateTime ActiveDate
         {
             get { return _activeDate; }
@@ -37,15 +40,15 @@ namespace NutritionApp.Mobile.ViewModels
             set { SetProperty(ref _kcalProgress, value); }
         }
 
-        public IList<NutritionItem> ListOfNutritionItems
+        public IList<NutritionDiaryItem> ListOfNutritionDiaryItems
         {
-            get { return _listOfNutritionItems; }
-            set { SetProperty(ref _listOfNutritionItems, value); }
+            get { return _listOfNutritionDiaryItems; }
+            set { SetProperty(ref _listOfNutritionDiaryItems, value); }
         }
 
         public ICommand PreviousDayCommand => new Command(OnPreviousDayCommandExecute);
         public ICommand NextDayCommand => new Command(OnNextDayCommandExecute);
-        public ICommand AddNutritionItemCommand => new Command(OnAddNutritionItemCommandExecute);
+        public ICommand AddNutritionDiaryItemCommand => new Command(OnAddNutritionDiaryItemCommandExecute);
 
         #endregion
 
@@ -56,7 +59,8 @@ namespace NutritionApp.Mobile.ViewModels
         /// </summary>
         public NutritionViewModel()
         {
-            Title = "NUTRITION DIARY";                  
+            Title = "NUTRITION DIARY";
+            NutritionDiaryDataService = ViewModelLocator.Resolve<INutritionDiaryDataService>();
         }
 
         #endregion
@@ -79,7 +83,7 @@ namespace NutritionApp.Mobile.ViewModels
             ActiveDate = new DateTime(todayAsBinary);
 
             // Load the nutrition items for the date
-            Task.Run(async () => await LoadNutritionItemsForDate(ActiveDate));
+            Task.Run(async () => await LoadNutritionDiaryItemsForDate(ActiveDate));
 
             // Set the progress bar etc.
             UpdateNutritionDetails();
@@ -94,9 +98,9 @@ namespace NutritionApp.Mobile.ViewModels
         /// Load the nutrition items for a specific date.
         /// </summary>
         /// <param name="date"></param>
-        private async Task LoadNutritionItemsForDate(DateTime date)
+        private async Task LoadNutritionDiaryItemsForDate(DateTime date)
         {
-            ListOfNutritionItems = await NutritionDataService.GetItemsAsync(date) as IList<NutritionItem>;
+            ListOfNutritionDiaryItems = await NutritionDiaryDataService.GetItemsAsync(date);
         }
 
         /// <summary>
@@ -107,7 +111,7 @@ namespace NutritionApp.Mobile.ViewModels
             // Calcualtes the prevous day date
             ActiveDate = ActiveDate.AddDays(-1);
 
-            Task.Run(async () => await LoadNutritionItemsForDate(ActiveDate));
+            Task.Run(async () => await LoadNutritionDiaryItemsForDate(ActiveDate));
             UpdateNutritionDetails();
         }
 
@@ -119,14 +123,14 @@ namespace NutritionApp.Mobile.ViewModels
             // Calcualtes the prevous day date
             ActiveDate = ActiveDate.AddDays(1);
 
-            Task.Run(async () => await LoadNutritionItemsForDate(ActiveDate));
+            Task.Run(async () => await LoadNutritionDiaryItemsForDate(ActiveDate));
             UpdateNutritionDetails();
         }
 
         /// <summary>
         /// Adds a new nutrition item to the nutrition diary of the person
         /// </summary>
-        private void OnAddNutritionItemCommandExecute()
+        private void OnAddNutritionDiaryItemCommandExecute()
         {
 
         }
