@@ -30,6 +30,21 @@ namespace NutritionApp.Mobile.Services.DeviceStorage
         /// </summary>
         private string _personItemFile = "PersonItems.txt";
 
+        /// <summary>
+        /// The nutrition item categories file name.
+        /// </summary>
+        private string _categoriesItemFile = "Categories.txt";
+
+        /// <summary>
+        /// The nutrition diary file name
+        /// </summary>
+        private string _nutritionDiaryFile = "NutritionDiary.txt";
+
+        /// <summary>
+        /// The recipe file name
+        /// </summary>
+        private string _recipesFile = "Recipes.txt";
+
         #endregion
 
         #region Constructors
@@ -137,6 +152,84 @@ namespace NutritionApp.Mobile.Services.DeviceStorage
             }
 
             return JsonConvert.DeserializeObject<IEnumerable<NutritionItem>>(readText);
+        }
+
+        /// <summary>
+        /// Write all recipes into a file stored on the device as a json string.
+        /// </summary>
+        /// <param name="recipes"></param>
+        public void WriteRecipes(IEnumerable<RecipeItem> recipes)
+        {
+            var json = JsonConvert.SerializeObject(recipes);
+            WriteFile(_recipesFile, json);
+        }
+
+        /// <summary>
+        /// REad all recipes from the recipe file as a jason string.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<RecipeItem> ReadRecipes()
+        {
+            var readText = ReadFile(_recipesFile);
+
+            if (String.IsNullOrEmpty(readText))
+            {
+                return null;
+            }
+
+            return JsonConvert.DeserializeObject<IEnumerable<RecipeItem>>(readText);
+        }
+
+        /// <summary>
+        /// Write all categories to a local file on your device as a json string.
+        /// </summary>
+        /// <param name="categories"></param>
+        public void WriteNutritionCategories(IEnumerable<NutritionItemCategorie> categories)
+        {
+            var json = JsonConvert.SerializeObject(categories);
+            WriteFile(_categoriesItemFile, json);
+        }
+
+        /// <summary>
+        /// Read all categories from a local file on your device.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<NutritionItemCategorie> ReadNutritionCategories()
+        {
+            var readText = ReadFile(_categoriesItemFile);
+
+            if (String.IsNullOrEmpty(readText))
+            {
+                return null;
+            }
+
+            return JsonConvert.DeserializeObject<IEnumerable<NutritionItemCategorie>>(readText);
+        }
+
+        /// <summary>
+        /// Write all nutrition diary items to a file on your device.
+        /// </summary>
+        /// <param name="diaryEntries"></param>
+        public void WriteNutritionDiaryItems(IEnumerable<NutritionDiaryItem> diaryEntries)
+        {
+            var json = JsonConvert.SerializeObject(diaryEntries);
+            WriteFile(_nutritionDiaryFile, json);
+        }
+
+        /// <summary>
+        /// Read all nutrition diary items from a local file on your device
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<NutritionDiaryItem> ReadNutritionDiaryItems()
+        {
+            var readText = ReadFile(_nutritionDiaryFile);
+
+            if (String.IsNullOrEmpty(readText))
+            {
+                return null;
+            }
+
+            return JsonConvert.DeserializeObject<IEnumerable<NutritionDiaryItem>>(readText);
         }
 
         #endregion
