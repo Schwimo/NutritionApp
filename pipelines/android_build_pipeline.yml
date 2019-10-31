@@ -7,13 +7,19 @@ trigger:
 - master
 
 pool:
-  vmImage: 'macos-latest'
+  vmImage: 'windows-latest'
 
 variables:
   buildConfiguration: 'Release'
   outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
 
 steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'runtime'
+    version: '3.0.x'    
+    performMultiLevelLookup: true
+
 - task: NuGetToolInstaller@1
   inputs:
     versionSpec: 
@@ -32,6 +38,11 @@ steps:
     configuration: '$(buildConfiguration)'
     clean: true
     msbuildVersionOption: 'latest'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/*Mobile.UnitTests.csproj'
 
 - task: DotNetCoreCLI@2
   inputs:
