@@ -1,4 +1,5 @@
 ﻿using NutritionApp.Mobile.Services.DataService.Nutrition;
+using NutritionApp.Mobile.Services.DeviceStorage;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +14,16 @@ namespace NutritionApp.Mobile.ViewModels.Core
         bool isBusy = false;
         string title = string.Empty;
 
-        protected readonly INutritionDataService NutritionDataService;
-
+        private readonly INutritionDataService _nutritionDataService;
+        
         #endregion
 
         #region Properties
+
+        /// <summary>
+        /// Get the NutritionDataService
+        /// </summary>
+        public INutritionDataService NutritionDataService => _nutritionDataService;
 
         public bool IsBusy
         {
@@ -37,15 +43,24 @@ namespace NutritionApp.Mobile.ViewModels.Core
 
         public BaseViewModel()
         {
-            NutritionDataService = ViewModelLocator.Resolve<INutritionDataService>();
+            _nutritionDataService = ViewModelLocator.Resolve<INutritionDataService>();
         }
 
         #endregion
 
         #region Methods
 
+        public virtual void OnNavigatingTo(object param)
+        {
+        }
+
         public virtual void OnAppearing()
         {
+        }
+
+        public virtual bool OnBackButtonPressed()
+        {
+            return false;
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value,

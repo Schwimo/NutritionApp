@@ -1,4 +1,4 @@
-﻿using NutritionApp.Mobile.Models.Nutrition;
+﻿using NutritionApp.Core.Models.Nutrition;
 using NutritionApp.Mobile.Services.DataService.Core;
 
 namespace NutritionApp.Mobile.Services.DataService

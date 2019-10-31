@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using NutritionApp.Mobile.Services.DataService;
 using NutritionApp.Mobile.Services.DataService.Nutrition;
+using NutritionApp.Mobile.Services.DeviceStorage;
 using System;
 using System.Globalization;
 using System.Reflection;
@@ -19,7 +20,7 @@ namespace NutritionApp.Mobile.ViewModels.Core
         #endregion
         
         #region Properties
-        public static bool UseMockService { get; set; }
+        public static bool UseOfflineServices { get; set; }
 
         #endregion
 
@@ -27,15 +28,15 @@ namespace NutritionApp.Mobile.ViewModels.Core
 
         public ViewModelLocator()
         {
-            UseMockService = true;
-            RegisterDependencies(UseMockService);
+            UseOfflineServices = true;
+            RegisterDependencies(UseOfflineServices);
         }
 
         #endregion
 
         #region Methods
 
-        public static void RegisterDependencies(bool useMockServices)
+        public static void RegisterDependencies(bool useOfflineServices)
         {
             var builder = new ContainerBuilder();
 
@@ -44,26 +45,30 @@ namespace NutritionApp.Mobile.ViewModels.Core
             builder.RegisterType<AboutViewModel>();
             builder.RegisterType<NutritionViewModel>();
             builder.RegisterType<BodyViewModel>();
+            builder.RegisterType<DatabaseViewModel>();
+            builder.RegisterType<NutritionItemDetailsViewModel>();
 
             // Services                        
-            
-            if (useMockServices)
+
+            if (useOfflineServices)
             {
                 // Register mock services for testing
-                UseMockService = true;
-                builder.RegisterType<MockNutritionDataService>().As<INutritionDataService>().SingleInstance();
-                
-                builder.RegisterType<MockNutritionDiaryDataService>().As<INutritionDiaryDataService>().SingleInstance();
+                UseOfflineServices = true;
+                builder.RegisterType<OfflineNutritionDataService>().As<INutritionDataService>().SingleInstance();
+                builder.RegisterType<OfflineNutritionDiaryDataService>().As<INutritionDiaryDataService>().SingleInstance();
+
                 builder.RegisterType<MockRecipeDataService>().As<IRecipeDataService>().SingleInstance();
 
                 builder.RegisterType<MockPersonDataService>().As<IPersonDataService>().SingleInstance();                
                 builder.RegisterType<MockWeightDataService>().As<IWeightDataService>().SingleInstance();
-                builder.RegisterType<MockCircumferenceDataService>().As<ICircumferenceDataService>().SingleInstance();                
+                builder.RegisterType<MockCircumferenceDataService>().As<ICircumferenceDataService>().SingleInstance();
+
+                builder.RegisterType<DeviceStorageService>().As<IDeviceStorageService>().SingleInstance();
             }
             else
             {
                 // Register real services
-                UseMockService = false;
+                UseOfflineServices = false;
             }
 
             if (_container != null)

@@ -29,16 +29,16 @@
     </Shell.Resources>
     
     <!-- Your Pages -->
-    <TabBar >        
+    <TabBar >
+        <Tab Title="HOME" Icon="account.png" >
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
         <Tab Title="NUTRITION" Icon="food.png">
             <ShellContent ContentTemplate="{DataTemplate local:NutritionPage}" />
         </Tab>
         <Tab Title="BODY" Icon="body.png">
             <ShellContent ContentTemplate="{DataTemplate local:BodyPage}" />
-        </Tab>
-        <Tab Title="HOME" Icon="account.png" >
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
-        </Tab>        
+        </Tab>             
     </TabBar>    
 
 </Shell>

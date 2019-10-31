@@ -1,9 +1,7 @@
-﻿using NutritionApp.Mobile.Models.Nutrition;
-using NutritionApp.Mobile.Models.Person;
-using NutritionApp.Mobile.Services.DataService.Core;
+﻿using NutritionApp.Core.Models.Nutrition;
+using NutritionApp.Core.Models.Person;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace NutritionApp.Mobile.Services.DataService

@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
-using NutritionApp.Mobile.Models.Nutrition;
+using NutritionApp.Core.Models.Nutrition;
 using System;
 using System.Collections.Generic;
 
-namespace NutritionApp.Mobile.Models.Person
+namespace NutritionApp.Core.Models.Person
 {
     public class PersonItem
     {

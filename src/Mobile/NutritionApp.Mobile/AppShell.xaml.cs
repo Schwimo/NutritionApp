@@ -11,5 +11,16 @@ namespace NutritionApp.Mobile
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// TODO: Show a message 
+        /// "Pressing again will close the app"
+        /// </summary>
+        /// <returns></returns>
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+            //return base.OnBackButtonPressed();
+        }
     }
 }

@@ -1,5 +1,5 @@
-﻿using NutritionApp.Mobile.Models.Nutrition;
-using NutritionApp.Mobile.Models.Person;
+﻿using NutritionApp.Core.Models.Nutrition;
+
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

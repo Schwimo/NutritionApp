@@ -1,15 +1,33 @@
-﻿using NutritionApp.Mobile.Models.Nutrition;
+﻿using NutritionApp.Core.Models.Nutrition;
+using NutritionApp.Mobile.Services.DataServices.Core;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace NutritionApp.Mobile.Services.DataService
 {
-    public class OfflineNutritionDiaryDataService : INutritionDiaryDataService
+    public class OfflineNutritionDiaryDataService : BaseDataService, INutritionDiaryDataService
     {
+        #region Fields
+
+
+
+        #endregion
+
+        #region Constructors
+
+        public OfflineNutritionDiaryDataService()
+        {
+
+        }
+
+        #endregion
+
+        #region Methods
+
         public Task<bool> AddItemAsync(NutritionDiaryItem item)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(true);
         }
 
         public Task<bool> DeleteItemAsync(string id)
@@ -22,7 +40,7 @@ namespace NutritionApp.Mobile.Services.DataService
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<NutritionDiaryItem>> GetItemsAsync(DateTime dateConstraint, bool forceRefresh = false)
+        public Task<IList<NutritionDiaryItem>> GetItemsAsync(DateTime date, bool forceRefresh = false)
         {
             throw new NotImplementedException();
         }
@@ -31,5 +49,7 @@ namespace NutritionApp.Mobile.Services.DataService
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }
