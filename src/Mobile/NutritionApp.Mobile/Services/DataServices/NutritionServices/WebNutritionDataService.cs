@@ -49,7 +49,7 @@ namespace NutritionApp.Mobile.Services.DataService.Nutrition
 
         public async Task<bool> UpdateItemAsync(NutritionItem item)
         {
-            if (item == null || item.ID == null || !IsConnected)
+            if (item == null || !IsConnected)
             {
                 return false;
             }
